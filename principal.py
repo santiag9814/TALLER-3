@@ -15,8 +15,9 @@ while True:
     opcion = input("""Ingrese:
     \n1  Cargar pacientes (jornada)
     \n2  Exportar datos a JSON o CSV
-    \n3  algo pendiente
-    \n4  para salir del sistema
+    \n3  Mostrar historial de acciones
+    \n4  Subir archivos a la base de datos del hospital 
+    \n5  Para salir del sistema
     \n Opcion: """).strip()
 
     if opcion == "1":
@@ -45,11 +46,36 @@ while True:
                 break
 
     elif opcion == "3":
-        print("en desarrollo ;)")
-        break
+        print(intento.historial())
 
     elif opcion == "4":
+        while True:
+            opdb = input("""Ingrese:
+            \n1  Insertar historias.json en la base de datos
+            \n2  Consultar todos los registros
+            \n3  Buscar paciente por ID
+            \n4  Volver al menu principal
+            \n Opcion: """).strip()
+
+            if opdb == "1":
+                print(intento.insertar_json())
+
+            elif opdb == "2":
+                print(intento.consultar_registros())
+
+            elif opdb == "3":
+                id_buscar = input("Ingrese el ID del paciente: ").strip()
+                print(intento.consultar_por_id(id_buscar))
+
+            elif opdb == "4":
+                break
+
+            else:
+                print("Opción no válida. Seleccione una opción del 1 al 4.")
+
+    elif opcion == "5":
         print("Saliendo del sistema...")
         break
+
     else:
-        print("Opción no válida. Por favor, seleccione una opción del 1 al 4.")
+        print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
